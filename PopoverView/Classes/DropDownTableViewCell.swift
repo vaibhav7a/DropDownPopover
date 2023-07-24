@@ -10,6 +10,7 @@ import UIKit
 
 public class DropDownTableViewCell: UITableViewCell {
     @IBOutlet internal weak var titleLabel: UILabel!
+    public var selectedRowColor: UIColor?
     public override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,6 +20,10 @@ public class DropDownTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    public override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        super.setHighlighted(highlighted, animated: animated)
+        self.backgroundColor = selectedRowColor
     }
     
 }

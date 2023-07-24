@@ -463,6 +463,7 @@ extension iOSPopoverView: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "DropDownTableViewCell") as? DropDownTableViewCell else {
             return UITableViewCell()
         }
+        cell.selectedRowColor = selectedRowColor
         if indexPath.row != selectedIndex {
             cell.backgroundColor = rowBackgroundColor
         } else {
