@@ -158,7 +158,7 @@ public class iOSPopoverView: UIView {
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(keyboardWillShow),
-            name: NSNotification.Name.UIKeyboardWillShow,
+            name: UIResponder.keyboardWillShowNotification,
             object: nil
         )
         if self.headingLabel != nil {
@@ -245,7 +245,7 @@ public class iOSPopoverView: UIView {
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {
-        if let keyboardFrame: NSValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRectangle.height
             let heightScreenAccording = UIScreen.main.bounds.size.height - (self.frame.origin.y + keyboardHeight)
