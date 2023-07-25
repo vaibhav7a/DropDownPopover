@@ -469,7 +469,9 @@ extension iOSPopoverView: UITableViewDelegate, UITableViewDataSource {
             cell.backgroundColor = selectedRowColor
         }
         cell.titleLabel.font = self.cellTextFont ?? UIFont.systemFont(ofSize: 14.0)
-        cell.titleLabel.text = dataArray[indexPath.row]
+        if indexPath.row < dataArray.count {
+            cell.titleLabel.text = dataArray[indexPath.row]
+        }
         cell.titleLabel.textColor = UIColor.black
         //cell!.accessoryType = (indexPath.row == selectedIndex) && checkMarkEnabled  ? .checkmark : .none
         return cell
@@ -486,7 +488,7 @@ extension iOSPopoverView: UITableViewDelegate, UITableViewDataSource {
         self.selectedIndex = 0
         self.delegate?.popoverView(self, index: indexPath.row, selectedText: selectedText, sourceIndex: self.cellIndex)
         self.dismiss()
-
+        
     }
 }
 extension iOSPopoverView: UITextFieldDelegate {
